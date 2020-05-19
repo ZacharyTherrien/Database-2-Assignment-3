@@ -18,14 +18,15 @@
 <container>
     <body>
         <header>
-            <h1>Amiibo Store!</h1>
+            <h1>🗦 Amiibo Store 🗧</h1>
         </header>
         <nav>
             <ul id="navigationBar">
-                <li class="naviationItem"><a href="index.php">Home Page</a></li>
-                <li class="naviationItem"><a href="news.asp">News</a></li>
-                <li class="naviationItem"><a href="contact.asp">Contact</a></li>
-                <li class="naviationItem"><a href="about.asp">About</a></li>
+                <li class="navigationItem"><a href="index.php">Home</a></li>
+                <li class="navigationItem"><a href="product.php">Prodcuts</a></li>
+                <li class="navigationItem"><a href="collection.php">Collection</a></li>
+				<li class="navigationItem" class="userItem"><a href="registration.php">Sign Up</a></li>
+                <li class="navigationItem" class="userItem"><a href="login.php">Login</a></li>
             </ul>
         </nav>
         <main>
@@ -35,23 +36,20 @@
             in selling amiibo figures. Our target demographic consists mostly of young children and 
             young adults who enjoy gaming on compatible Nintendo consoles.</p>
             </fieldset>
-            <br>
             <fieldset>
                 <b><p>Store Description</p></b>
                 <p>As the name implies, we are the ‘Amiibo Store’. Our establishment specializes 
                 in selling amiibo figures. Our target demographic consists mostly of young children 
                 and young adults who enjoy gaming on compatible Nintendo consoles.</p>
             </fieldset>
-            <br>
             <fieldset>
                 <b><p>Hottest Products</p></b>
                 <p>Here are our the bestselling, literally flying off the shelves. 
                 Make sure to lock your purchase before it's too late!</p>
             </fieldset>
-            <br>
         </main>
         <footer>
-            <h2>Footer</h2>
+            <span>Amiibo Store ©2020 All Rights Reserved.</span>
         </footer>
     </body>
 </container>

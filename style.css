@@ -7,28 +7,52 @@ container {
         "nav"
         "main"
         "footer";
-    justify-items: center;
+    
+	font-family: Verdana;
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
 }
 
 header {
-    background-color: cornflowerblue;
+    background-color: #2E51A2;
+	color: white;
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 body {
-    background-color: aliceblue;
+    background-image: url("./Images/amiibo_bg.jpg");
+	background-repeat: repeat;
     margin: 0px;
+    justify-items: center;
+	font-family: Arial;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+main {
+	background-color: white;
+	padding: 10px;
+	min-height: 100%;
 }
 
 #navigationBar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+	font-weight: bold;
 }
 
 .navigationItem {
-    display: inline;
+	float: left;
 }
 
 .navigationItem a {
@@ -40,5 +64,27 @@ body {
 }
 
 .navigationItem a:hover {
-    background-color: #111;
+	display: block;
+	background-color: #2E51A2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+a {
+  display: block;
+  padding: 8px;
+  background-color: #333;
+}
+
+fieldset {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+footer {
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
