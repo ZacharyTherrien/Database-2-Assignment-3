@@ -1,3 +1,27 @@
+<?php
+    //CONNECTION JUST, MOVE TO A CONNECTION FILE LATER.
+    $host = 'mysql';
+    $user = 'root';
+    $password = 'rootpassword';
+    $database = 'Amiibo_DB';
+    $connection = new mysqli($host, $user, $password, $database);
+    if($connection->$connect_errno){
+         exit("Error: ".$connection->connect_errno);
+    }
+
+    //CONTROLLER TO DISPLAY AMIIBOS ON HOMES PAGE, CONNECTION FILE LATER.
+    $query = "SELECT `id` ,`name`, `price` FROM `product`";
+    $statement = $connection->prepare($query);
+    $statement->execute();
+    $statement->bind_result($id, $name, $price);
+    $products = [];
+    for($i = 0; $statement->fetch(); $i++){
+        $products[$i] = ['id' => $id, 'name' => $name, 'price' => $price];
+    }
+    /*Blurt out the contents of the associative array, debugging only.*/
+    //echo print_r($products);    
+    $statement->close();
+?>
 <!DOCTYPE html>
 <!--
     Questions to ask Vik:
@@ -11,6 +35,7 @@
     - A page for individual collections.
 -->
 <head>
+    <!-- SHOULD THIS ALSO BE IN A SNIPPET OF CODE?!? -->
     <meta charset="utf-8">
     <link href="style.css" rel="stylesheet">
     <title>Amiibo Store</title>
@@ -47,6 +72,21 @@
                 <p>Here are our the bestselling, literally flying off the shelves. 
                 Make sure to lock your purchase before it's too late!</p>
             </fieldset>
+            <div class="content">
+                <ul>
+                <?php foreach ($products as $product) { ?>
+                    <li>
+                        <span>
+                            <form action="./products.php" method="GET">
+                                <input type="hidden" name="id" value="<?= $product['id'] ?>">
+                                <input type="submit" value="<?= $product['name'] ?>">
+                            </form>
+                            <?= " || ".$product['price'] ?>
+                        </span>
+                    </li>
+                 <?php } ?>
+                </ul>
+            </div>
         </main>
         <footer>
             <span>Amiibo Store ©2020 All Rights Reserved.</span>
