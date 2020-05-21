@@ -23,6 +23,7 @@
     - When inserting a new customer, how do we check for unique fields?
     - Help for registrations.
     **NOTE, customer & admins now have INSERT rights on customer table.
+    - Current session does not display id.
 
     Ideas:
     - A collection home page: demonstrate a bunch of collections.
@@ -80,6 +81,13 @@
                     </li>
                  <?php } ?>
                 </ul>
+            </div>
+            <div>
+                    TEST AREA: Current user id is set: 
+                    <?php if(isset($_SESSION['username']))
+                    { echo "yes!";
+                    } 
+                    ?>
             </div>
         </main>
         <footer>
