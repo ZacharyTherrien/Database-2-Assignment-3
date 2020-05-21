@@ -272,7 +272,7 @@ ON `Amiibo_DB`.`customer_info_for_product`
 TO `Registered Customer`;
 
 -- Customer
-GRANT SELECT, UPDATE, DELETE
+GRANT SELECT, UPDATE, DELETE, INSERT
 ON `Amiibo_DB`.`customer`
 TO `Registered Customer`;
 
@@ -321,7 +321,7 @@ ON `Amiibo_DB`.`product`
 TO `Administrator`;
 
 -- Customer
-GRANT SELECT, DELETE
+GRANT SELECT, DELETE, INSERT
 ON `Amiibo_DB`.`customer_info_for_admin`
 TO `Administrator`;
 

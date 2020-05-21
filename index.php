@@ -1,15 +1,6 @@
 <?php
     session_start();
-    //CONNECTION JUST, MOVE TO A CONNECTION FILE LATER.
-    $host = 'mysql';
-    $user = 'root';
-    $password = 'rootpassword';
-    $database = 'Amiibo_DB';
-    $connection = new mysqli($host, $user, $password, $database);
-    if($connection->$connect_errno){
-         exit("Error: ".$connection->connect_errno);
-    }
-
+    require_once('./controllers/database.controller.php');
     //CONTROLLER TO DISPLAY AMIIBOS ON HOMES PAGE, CONNECTION FILE LATER.
     $query = "SELECT `id`, `name`, `series` FROM `product` ORDER BY `num_sold` DESC LIMIT 5";
     $statement = $connection->prepare($query);
@@ -29,7 +20,9 @@
     - How to store BLOBs?
     - Do passwords need to be hashed and then stores?
     - Will the collection trigger work if making a purchase?
-
+    - When inserting a new customer, how do we check for unique fields?
+    - Help for registrations.
+    **NOTE, customer & admins now have INSERT rights on customer table.
 
     Ideas:
     - A collection home page: demonstrate a bunch of collections.
