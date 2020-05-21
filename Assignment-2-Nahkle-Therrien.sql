@@ -17,7 +17,7 @@ CREATE TABLE `product` (
     `price` DECIMAL(5,2) DEFAULT 21.99,
     `stock` INTEGER DEFAULT 0,
 	`series` ENUM('Super Smash Bros.','Mario Party',"Yoshi's Wooly World",'Splatoon'),
-    `num_sold` INTEGER,
+    `num_sold` INTEGER DEFAULT 0,
     
     CONSTRAINT `chk_product_valid_price`
     CHECK (`price` >= 0),
@@ -217,8 +217,8 @@ CREATE TABLE `image`(
 -------------
 
 -- An index for products.
-CREATE INDEX `idx_product_name_series_stock`
-ON `product` (`name`, `series`, `stock`);
+CREATE INDEX `idx_product_name_series`
+ON `product` (`name`, `series`);
 
 -- An index for review by ratings.
 CREATE INDEX `idx_review_rating_product_id`
@@ -407,26 +407,26 @@ VALUES (0004, 003, '9999-12-31 23:59:59', '25.59');
 
 
 -- Insert mock data for product
-INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `series`)
-VALUES (001, 'Mario', "It's a me, Mario!", 21.99, 10, 'Super Smash Bros.');
+INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `series`, `num_sold`)
+VALUES (001, 'Mario', "It's a me, Mario!", 21.99, 10, 'Super Smash Bros.', 10);
 INSERT INTO `product` (`id`, `name`, `description`, `stock`, `series`)
 VALUES (002, 'Yoshi', 'Tax evasion lol.', 0, 'Super Smash Bros.');
-INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `series`)
-VALUES (003, 'Luigi', 'Green Mario.', 18.99, 10, 'Super Smash Bros.');
-INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `series`)
-VALUES (004, 'Fox', 'ha ha, reflector goes BLEP frame 1.', 21.99, 10, 'Super Smash Bros.');
-INSERT INTO `product` (`id`, `name`, `description`, `price`, `series`)
-VALUES (005, 'Link', "Don't bother, none are left thanks to BotW.", 199.99, 'Super Smash Bros.');
+INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `series`, `num_sold`)
+VALUES (003, 'Luigi', 'Green Mario.', 18.99, 10, 'Super Smash Bros.', 10);
+INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `series`, `num_sold`)
+VALUES (004, 'Fox', 'ha ha, reflector goes BLEP frame 1.', 21.99, 10, 'Super Smash Bros.', 0519);
+INSERT INTO `product` (`id`, `name`, `description`, `price`, `series`, `num_sold`)
+VALUES (005, 'Link', "Don't bother, none are left thanks to BotW.", 199.99, 'Super Smash Bros.', 100);
 INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `series`)
 VALUES (006, 'Donkey Kong', 'CG, coconut gun!', 28.99, 1, 'Super Smash Bros.');
-INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `series`)
-VALUES (007, 'Ness', "Sans. Ha ha, good joke.", 19.99, 10, 'Super Smash Bros.');
+INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `series`, `num_sold`)
+VALUES (007, 'Ness', "Sans. Ha ha, good joke.", 19.99, 10, 'Super Smash Bros.', 97);
 INSERT INTO `product` (`id`, `name`, `description`, `stock`, `series`)
 VALUES (008, 'Jigglypuff', 'Jigglypuff? I sleep.', 10, 'Super Smash Bros.');
 INSERT INTO `product` (`id`, `name`, `description`, `price`, `series`)
 VALUES (009, 'Pikachu', 'The Pokémon that says its name!', 21.99, 'Super Smash Bros.');
-INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `series`)
-VALUES (010, 'Waluigi', 'I added all Smash characters and then Waluigi just to make a joke.', 25.99, 10, 'Mario Party');
+INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `series`, `num_sold`)
+VALUES (010, 'Waluigi', 'I added all Smash characters and then Waluigi just to make a joke.', 25.99, 10, 'Mario Party', 999);
 
 -- Insert mock data for order items
 -- Order 0001 customer 0001 (Truda)
