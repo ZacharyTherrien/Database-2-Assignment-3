@@ -1,12 +1,3 @@
-<?php
-/*
-Error Numbers:
-1. No email set
-2. No password set.
-3. Neither email nor password are set.
-4. Either email or password are incorrect.
-*/
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,12 +8,12 @@ Error Numbers:
     <container>
         <body>
             <main>
-                <form action="./controllers/log.controller.php" method="POST">
+                <form action="./controllers/login.controller.php" method="POST">
                     <input type="text" name="email" placeholder="email">
                     <input type="password" name="password">
                     <input type="submit" value="Log in">
                 </form>
-                <div>
+                <div class="Error_Message">
                 <?php 
                     if(isset($_GET['err'])){
                         switch ($_GET['err']){

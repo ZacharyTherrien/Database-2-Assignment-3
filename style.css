@@ -88,3 +88,13 @@ footer {
 	justify-content: center;
 	align-items: center;
 }
+
+#userDisplay{
+	display: block;
+	color: white;
+	float: right;
+	padding-top: 16px;
+	padding-left: 16px;
+	padding-right: 10px;
+	font-size: small;
+}

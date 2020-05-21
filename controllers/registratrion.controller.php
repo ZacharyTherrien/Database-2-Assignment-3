@@ -66,7 +66,7 @@ else{
             session_start();
             $_SESSION['id'] = $id;
             $_SESSION['username'] = $username;
-            header('Location: ../index.php');
+            header('Location: ../registration.php?err=0');
             //header('Location: ./login.controller.php');
             //header('Location: ../index.php');
         }

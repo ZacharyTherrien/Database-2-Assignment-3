@@ -18,12 +18,9 @@
 <!--
     Questions to ask Vik:
     - How to store BLOBs?
-    - Do passwords need to be hashed and then stores?
+    - Do passwords need to be hashed and then stored?
     - Will the collection trigger work if making a purchase?
-    - When inserting a new customer, how do we check for unique fields?
-    - Help for registrations.
-    **NOTE, customer & admins now have INSERT rights on customer table.
-    - Current session does not display id.
+    - How to stay logged in after registering.
 
     Ideas:
     - A collection home page: demonstrate a bunch of collections.
@@ -45,8 +42,13 @@
                 <li class="navigationItem"><a href="index.php">Home</a></li>
                 <li class="navigationItem"><a href="products.php">Prodcuts</a></li>
                 <li class="navigationItem"><a href="collection.php">Collection</a></li>
-				<li class="navigationItem" class="userItem"><a href="registration.php">Sign Up</a></li>
-                <li class="navigationItem" class="userItem"><a href="login.php">Login</a></li>
+                <?php if(!isset($_SESSION['id'])){ ?>
+                    <li class="navigationItem" class="userItem"><a href="registration.php">Sign Up</a></li>
+                    <li class="navigationItem" class="userItem"><a href="login.php">Login</a></li>
+                <?php }else{ ?>
+                    <li class="navigationItem"><a href="./controllers/logout.controller.php">Log Out</a></li>
+                    <li><span id="userDisplay">Welcome <?= $_SESSION['username'] ?>!</span></li>
+                <?php }?>
             </ul>
         </nav>
         <main>

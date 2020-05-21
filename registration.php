@@ -3,8 +3,8 @@
 Error numbers:
 1. Empty field.
 2. Passwords do not match
-3. Non-unique email.
-4. Non-unique password.
+3. Non-unique username.
+4. Non-unique email.
 */
 ?>
 <!DOCTYPE html>
@@ -28,8 +28,28 @@ Error numbers:
                         <li><input type="submit" value="Register!"></li>
                     </ul>
                 </form>
+                <?php if(isset($_GET['err']) && $_GET['err'] == 0){ ?>
+                    <div class="Successful_Action">Registration successful!</div>
+                <?php } ?>
                 <div id="Error_Message">
-                    Err=<?= $_GET['err']?>
+                    <?php 
+                        if(isset($_GET['err'])){
+                            switch ($_GET['err']){
+                                case 1:
+                                    echo "One or more fields were empty.";
+                                    break;
+                                case 2:
+                                    echo "Passwords did not match.";
+                                    break;
+                                case 3:
+                                    echo "User is already used.";
+                                    break;
+                                case 4:
+                                    echo "Email is already used.";
+                                    break;
+                            }
+                        }
+                    ?>
                 <div>
             </main>
         </body>
