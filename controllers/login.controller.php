@@ -6,7 +6,7 @@ Error Numbers:
 3. Neither email nor password are set.
 4. Either email or password are incorrect.
 */
-require_once('./database.controller.php');
+require_once('database.controller.php');
 $email = $_POST['email'];
 $pwd = $_POST['password'];
 //print_r($_POST);
