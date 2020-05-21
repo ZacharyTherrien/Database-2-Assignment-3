@@ -21,7 +21,7 @@ Error numbers:
                     <ul>
                         <li><input type="text" name="username" placeholder="Username"></li>
                         <li><input type="text" name="first_name" placeholder="First Name"></li>
-                        <li><input type="test" name="last_name" placeholder="Last Name"></li>
+                        <li><input type="text" name="last_name" placeholder="Last Name"></li>
                         <li><input type="text" name="email" placeholder="Email"></li>
                         <li><input type="password" name="password"></li>
                         <li><input type="password" name="password_confirmed"></li>
