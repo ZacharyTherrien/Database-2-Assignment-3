@@ -1,5 +1,4 @@
 <?php
-    //CONNECTION JUST, MOVE TO A CONNECTION FILE LATER.
     $host = 'mysql';
     $user = 'root';
     $password = 'rootpassword';

@@ -86,6 +86,7 @@
                     TEST AREA: Current user id is set: 
                     <?php if(isset($_SESSION['username']))
                     { echo "yes!";
+                      echo " As id: ".$_SESSION['id']." and name: ".$_SESSION['username'];
                     } 
                     ?>
             </div>

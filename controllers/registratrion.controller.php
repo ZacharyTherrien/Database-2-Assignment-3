@@ -5,8 +5,8 @@ require_once('./database.controller.php');
 Error numbers:
 1. Empty field.
 2. Passwords do not match
-3. Non-unique email.
-4. Non-unique password.
+3. Non-unique username.
+4. Non-unique email.
 */
 $user = $_POST['username'];
 $f_name = $_POST['first_name'];
@@ -31,14 +31,44 @@ else if($pwd !== $pwd_confirmed){
     header('Location: ../registration.php?err=2');
 }
 else{
-    //Insert fields and add customer.
-    $insert = "INSERT INTO `customer` (`username`, `first_name`, `last_name`, `email`, `password`)
-                VALUES (?, ?, ?, ?, ?)";
-    //echo $insert;
-    $statement = $connection->prepare($insert);
-    $statement->bind_param('sssss', $user, $f_name, $l_name, $email, $pwd_confirmed);
+    //Check for already existing username:
+    $query = "SELECT `username` FROM `customer` WHERE `username` = '$user'";
+    $statement = $connection->prepare($query);
     $statement->execute();
-    $statement->close();
-    //echo "yyyyyyy";
-    header('Location: ../index.php');
+    $statement->store_result();
+    //echo "result 1: ".$statement->num_rows;
+    if($statement->num_rows > 0){
+        header('Location: ../registration.php?err=3');
+        //echo "copy username";
+    }
+    else{
+        //Check for already existing email:
+        $query = "SELECT `email` FROM `customer` WHERE `email` = '$email'";
+        $statement = $connection->prepare($query);
+        $statement->execute();
+        $statement->store_result();
+        //echo "result 2: ".$statement->num_rows;
+        if($statement->num_rows > 0){
+            header('Location: ../registration.php?err=4');
+            //echo "copy email";
+        }
+        else{
+            //Insert fields and add customer.
+            $insert = "INSERT INTO `customer` (`username`, `first_name`, `last_name`, `email`, `password`)
+                        VALUES (?, ?, ?, ?, ?)";
+            //echo $insert;
+            $statement = $connection->prepare($insert);
+            $statement->bind_param('sssss', $user, $f_name, $l_name, $email, $pwd_confirmed);
+            $statement->execute();
+            $statement->close();
+            //echo "yyyyyyy";
+            //NOW LOG IN  THE USER?
+            session_start();
+            $_SESSION['id'] = $id;
+            $_SESSION['username'] = $username;
+            header('Location: ../index.php');
+            //header('Location: ./login.controller.php');
+            //header('Location: ../index.php');
+        }
+    }
 }
