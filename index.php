@@ -1,4 +1,5 @@
 <?php
+    session_start();
     //CONNECTION JUST, MOVE TO A CONNECTION FILE LATER.
     $host = 'mysql';
     $user = 'root';
@@ -48,7 +49,7 @@
         <nav>
             <ul id="navigationBar">
                 <li class="navigationItem"><a href="index.php">Home</a></li>
-                <li class="navigationItem"><a href="product.php">Prodcuts</a></li>
+                <li class="navigationItem"><a href="products.php">Prodcuts</a></li>
                 <li class="navigationItem"><a href="collection.php">Collection</a></li>
 				<li class="navigationItem" class="userItem"><a href="registration.php">Sign Up</a></li>
                 <li class="navigationItem" class="userItem"><a href="login.php">Login</a></li>

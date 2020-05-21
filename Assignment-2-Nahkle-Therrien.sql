@@ -11,7 +11,7 @@ USE `Amiibo_DB`;
 -------------------
 
 CREATE TABLE `product` (
-    `id` INTEGER,
+    `id` INTEGER AUTO_INCREMENT,
     `name` VARCHAR(100) NOT NULL,
     `description` VARCHAR(500),
     `price` DECIMAL(5,2) DEFAULT 21.99,
@@ -34,7 +34,7 @@ CREATE TABLE `product` (
 -- **the name sould not have a unique constraint as some Amiibo share the same name.
 
 CREATE TABLE `customer` (
-    `id` INTEGER,
+    `id` INTEGER AUTO_INCREMENT,
     `username` VARCHAR(15) NOT NULL,
     `first_name` VARCHAR(100) NOT NULL,
     `last_name` VARCHAR(100) NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE `customer` (
 -- Default registered date to be the current time that they registered.
 
 CREATE TABLE `order` (
-    `id` INTEGER,
+    `id` INTEGER AUTO_INCREMENT,
     `customer_id` INTEGER,
     `made_on` DATETIME DEFAULT NOW(),
     `grand_total` DECIMAL(5,2) NOT NULL,
@@ -125,7 +125,7 @@ CREATE TABLE `cart`(
 -- Not null: ^
 
 CREATE TABLE `game`(
-    `id` INTEGER,
+    `id` INTEGER AUTO_INCREMENT,
     `title` VARCHAR(50) NOT NULL,
     `console` ENUM('3DS', 'Wii U', 'New 3DS', 'Switch') NOT NULL,
     `num_sold` INTEGER,
@@ -198,7 +198,7 @@ CREATE TABLE `review`(
 -- Not null: rating & comment.
 
 CREATE TABLE `image`(
-    `id` INTEGER,
+    `id` INTEGER AUTO_INCREMENT,
     `product_id` INTEGER,
     `picture` blob,
     `alt_tag` VARCHAR(50),
