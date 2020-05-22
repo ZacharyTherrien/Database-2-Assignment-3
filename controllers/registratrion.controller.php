@@ -7,6 +7,7 @@ Error numbers:
 2. Passwords do not match
 3. Non-unique username.
 4. Non-unique email.
+5. Username too short.
 */
 $user = $_POST['username'];
 $f_name = $_POST['first_name'];
@@ -25,6 +26,9 @@ $pwd_confirmed = $_POST['password_confirmed'];
 if(empty($user) || empty($f_name) || empty($l_name) || empty($email) || empty($pwd) || empty($pwd_confirmed)){
     //echo "owo";
     header('Location: ../registration.php?err=1');
+}
+else if(strlen($user) <= 5){
+    header('Location: ../registration.php?err=5');
 }
 else if($pwd !== $pwd_confirmed){
     //echo "uwu";

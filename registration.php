@@ -18,13 +18,13 @@ Error numbers:
         <body>
             <main>
                 <form action="./controllers/registratrion.controller.php" method="POST">
-                    <ul>
+                    <ul class="lists">
                         <li><input type="text" name="username" placeholder="Username"></li>
                         <li><input type="text" name="first_name" placeholder="First Name"></li>
                         <li><input type="text" name="last_name" placeholder="Last Name"></li>
                         <li><input type="text" name="email" placeholder="Email"></li>
-                        <li><input type="password" name="password"></li>
-                        <li><input type="password" name="password_confirmed"></li>
+                        <li><input type="password" name="password" placeholder="password"></li>
+                        <li><input type="password" name="password_confirmed" placeholder="confirm password"></li>
                         <li><input type="submit" value="Register!"></li>
                     </ul>
                 </form>
@@ -46,6 +46,9 @@ Error numbers:
                                     break;
                                 case 4:
                                     echo "Email is already used.";
+                                    break;
+                                case 5:
+                                    echo "Username length is invalid";
                                     break;
                             }
                         }

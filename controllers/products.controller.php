@@ -1,7 +1,8 @@
 <?php
 require_once('database.controller.php');
 //Only shows products avilable to purchase (AKA stock than 0 in stock).
-$query = "SELECT `id`, `name`, `series` FROM `product`";
+//DEFAULT QUERY DISPLAYS NEWEST AMIIBOS FIRST.
+$query = "SELECT `id`, `name`, `series` FROM `product`ORDER BY `id` DESC";
 $statement = $connection->prepare($query);
 $statement->execute();
 $statement->bind_result($id, $name, $series);

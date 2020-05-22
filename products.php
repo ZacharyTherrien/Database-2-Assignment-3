@@ -11,13 +11,24 @@ if(isset($_GET['id'])){
 echo $id;
 if($id == 0){
     //Connections to each filter depending on $_GET:
-    //Filter on price, series, name (WHERE)
-    //Sort by name, series, price (ORDER BY)
+    //Filter on name, price, review avg (WHERE)
+    //Sort by name, review avg, price (ORDER BY)
     $filter;
     $sort;
     //product id 0 = or not set, main catalogue any id > 0 is an individual product.
     //If id == 0, check filter and sort.
-    require_once('./controllers/products.controller.php');
+    if(!isset($_GET['modified'])){
+        require_once('./controllers/products.controller.php');
+    }
+    else{
+        $sort = $_GET['sort'];
+        echo "Eyy, her my sort: ".$sort;
+        $filter1;
+        $filter2;
+        $filter3;
+        //require_once('./controllers/products.modified.php');
+        require_once('./controllers/products.controller.php');
+    }
     //Get average ratings.
     require_once('./controllers/review.averages.controller.php');
 }
@@ -37,7 +48,7 @@ else{
             <main>
                 <?php
                     //Test area:
-                    //print_r($avgRatings);
+                    //print_r($products);
                 ?>
                 <?php
                     //INDIVIDUAL PRODUCT (put into an include)
@@ -54,17 +65,37 @@ else{
                             <li><?= $price ?></li>
                         </ul>
                     </div>
-                <!-- ^ PRODUCT AND THEN PRODUCTS > -->
+                <!-- ^ PRODUCT AND THEN PRODUCTS STARTING AFTER THE ELSE> -->
                 <div>
-                        
                 </div>
                 <ul>
                     <?php 
                     } 
-                    else{   //PRODUCTS CATALOGUE (put into an include)
+                    else{   //PRODUCTS CATALOGUE (put into an include) ?>
+                    <div>
+                        <ul>
+                        <form action="./products.php" methos="GET">
+                            <li><label>Sort By: </label></li>
+                            <input type="hidden" name="modified" value="modified">
+                            <li><select name="sort">
+                                <option value="name">Name</option>
+                                <option value="series">Series</option>
+                                <option value="review">Review Score</option>
+                            </select></li>
+                            <li><label>Filter By:</label></li>
+                            <li>Name <input type="text" name="filterName"></input></li>
+                            <li>Price <input type="number" name="filterPrice"></input></li>
+                            <li>Average Rating <input type="number" name="filterRating"></input></li>
+                            <li><input type="submit" value="Use Parameters"></li>
+                            <li><a href="./products.php">Use Default</a></li>
+                        </form>
+                        </ul>
+                    </div>
+                    <ul class="lists">
+                    <?php
                         foreach($products as $product){ ?>
                             <li class="ProductDisplay">
-                                <span>
+                                <div>
                                     <?= "||".$product['name']." Series: ".$product['series']  ?>
                                     <?php
                                         $productReview =$avgRatings[$product['id']];
@@ -78,11 +109,14 @@ else{
                                     <form action="./products.php" method="GET">
                                         <input type="hidden" name="id" value='<?= $product['id'] ?>'>
                                         <input type="submit" value="Visit Page">
+                                        <!------->
                                     </form>
-                                </span>
+                                </div>
                             </li>
                     <?php 
-                        }
+                        } ?>
+                    </ul>
+                    <?php 
                     } ?>
                 </ul>
             </main>

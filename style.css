@@ -101,7 +101,12 @@ footer {
 	font-size: small;
 }
 
-.ProductDisplay{
+.productDisplay{
 	padding-top: 20px;
 	padding-bottom: 10px;
+}
+
+.lists{
+	list-style: none;
+	padding-left: 10px;
 }

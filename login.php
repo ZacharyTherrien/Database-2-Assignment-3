@@ -10,7 +10,7 @@
             <main>
                 <form action="./controllers/login.controller.php" method="POST">
                     <input type="text" name="email" placeholder="email">
-                    <input type="password" name="password">
+                    <input type="password" name="password" placeholder="password">
                     <input type="submit" value="Log in">
                 </form>
                 <div class="Error_Message">

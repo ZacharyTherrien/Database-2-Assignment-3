@@ -427,6 +427,8 @@ INSERT INTO `product` (`id`, `name`, `description`, `price`, `series`)
 VALUES (009, 'Pikachu', 'The Pokémon that says its name!', 21.99, 'Super Smash Bros.');
 INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `series`, `num_sold`)
 VALUES (010, 'Waluigi', 'I added all Smash characters and then Waluigi just to make a joke.', 25.99, 10, 'Mario Party', 999);
+INSERT INTO `product` (`name`, `description`, `price`, `stock`, `series`, `num_sold`)
+VALUES ('Gold Mario', 'Cause why not?', 25.99, 10, 'Mario Party', 99);
 
 -- Insert mock data for order items
 -- Order 0001 customer 0001 (Truda)
