@@ -59,13 +59,13 @@ else{
                     } 
                     else{   //PRODUCTS CATALOGUE (put into an include)
                         foreach($products as $product){ ?>
-                            <li>
+                            <li class="ProductDisplay">
                                 <span>
+                                    <?= "||".$product['name']." Series".$product['series']  ?>
                                     <form action="./products.php" method="GET">
                                         <input type="hidden" name="id" value='<?= $product['id'] ?>'>
-                                        <input type="submit" value='<?= $product['name'] ?>'>
+                                        <input type="submit" value="Visit Page">
                                     </form>
-                                    <?= $product['series'] ?>
                                 </span>
                             </li>
                     <?php 

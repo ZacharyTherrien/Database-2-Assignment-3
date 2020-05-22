@@ -38,14 +38,15 @@
         </header>
         <nav>
             <ul id="navigationBar">
-                <li class="navigationItem"><a href="index.php">Home</a></li>
-                <li class="navigationItem"><a href="products.php">Prodcuts</a></li>
-                <li class="navigationItem"><a href="collection.php">Collection</a></li>
+                <li class="navigationItem"><a href="index.php" class="navigationLink">Home</a></li>
+                <li class="navigationItem"><a href="products.php" class="navigationLink">Prodcuts</a></li>
+                <li class="navigationItem"><a href="collection.php" class="navigationLink">Collection</a></li>
                 <?php if(!isset($_SESSION['id'])){ ?>
-                    <li class="navigationItem" class="userItem"><a href="registration.php">Sign Up</a></li>
-                    <li class="navigationItem" class="userItem"><a href="login.php">Login</a></li>
+                    <li class="navigationItem" class="userItem"><a href="registration.php" class="navigationLink">Sign Up</a></li>
+                    <li class="navigationItem" class="userItem"><a href="login.php" class="navigationLink">Login</a></li>
                 <?php }else{ ?>
-                    <li class="navigationItem"><a href="./controllers/logout.controller.php">Log Out</a></li>
+                    <li class="navigationItem"><a href="./controllers/logout.controller.php" class="navigationLink">Log Out</a></li>
+                    <li class="navigationItem"><a href="./cart.php" class="navigationLink">Log Out</a></li>
                     <li><span id="userDisplay">Welcome <?= $_SESSION['username'] ?>!</span></li>
                 <?php }?>
             </ul>
@@ -71,13 +72,13 @@
             <div class="content">
                 <ul>
                 <?php foreach ($products as $product) { ?>
-                    <li>
+                    <li class="ProductDisplay">
                         <span>
+                            <?= "||".$product['name']." Series:".$product['series'] ?>
                             <form action="./products.php" method="GET">
                                 <input type="hidden" name="id" value="<?= $product['id'] ?>">
-                                <input type="submit" value="<?= $product['name'] ?>">
+                                <input type="submit" value="Visit Page">
                             </form>
-                            <?= " || ".$product['series'] ?>
                         </span>
                     </li>
                  <?php } ?>
@@ -93,7 +94,8 @@
             </div>
         </main>
         <footer>
-            <span>Amiibo Store ©2020 All Rights Reserved.</span>
+            <div>You can even find us on <a href="https://twitter.com/Niko_SSBU/status/1263687870935695371?s=20">Twitter</a> and <a href="https://youtu.be/bgTff9S2278">Youtube</a>!</div>
+            <div>Amiibo Store ©2020 All Rights Reserved.</div>
         </footer>
     </body>
 </container>

@@ -71,7 +71,7 @@ main {
     text-decoration: none;
 }
 
-a {
+.navigationLink {
   display: block;
   padding: 8px;
   background-color: #333;
@@ -84,9 +84,12 @@ fieldset {
 
 footer {
 	background-color: white;
-	display: flex;
-	justify-content: center;
+	display: grid;
+	flex-wrap: wrap;
 	align-items: center;
+	justify-items: center;
+	border-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 #userDisplay{
@@ -97,4 +100,9 @@ footer {
 	padding-left: 16px;
 	padding-right: 10px;
 	font-size: small;
+}
+
+.ProductDisplay{
+	padding-top: 20px;
+	padding-bottom: 10px;
 }
