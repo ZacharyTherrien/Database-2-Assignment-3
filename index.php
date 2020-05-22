@@ -12,6 +12,7 @@
     - Do we need an include for the header?
     - "display all products that are available to purchase on your site" so with stock > 0?
     - Sorting and filtering 3 each or 3 combined?
+    - Where should the item quantity be?
 
     TODOs:
     - 3 filter & sorting for products.

@@ -13,12 +13,13 @@ if($id == 0){
     require_once('./controllers/products.controller.php');
 }
 else{
+    //Connections to each filter depending on $_GET:
+    $filter;
+    $sort;
+    //product id 0 = or not set, main catalogue any id > 0 is an individual product.
+    //If id == 0, check filter and sort.
     require_once('./controllers/product.controller.php');
-    echo "AYOOO";
 }
-//Connections to each filter depending on $_GET:
-//product id 0 = or not set, main catalogue any id > 0 is an individual product.
-//If id == 0, check filter and sort.
 ?>
 <!DOCTYPE html>
 <html>

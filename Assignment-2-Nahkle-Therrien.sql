@@ -457,7 +457,7 @@ CREATE TRIGGER `after_order_item_insert_stock`
 AFTER INSERT 
 ON `order_item` FOR EACH ROW
     UPDATE`product`
-    SET `stock` = `stock` - 1
+    SET `stock` = `stock` - NEW.`quantity`
     WHERE `id` = NEW.`product_id`;
 
 -- 3. If customer (inserts) an order, add to product num_sold.
@@ -467,5 +467,5 @@ CREATE TRIGGER `after_order_item_insert_sold`
 AFTER INSERT
 ON `order_item` FOR EACH ROW
     UPDATE `product`
-    SET `num_sold` = `num_sold` + 1
+    SET `num_sold` = `num_sold` + NEW.`quantity`
     WHERE `id` = NEW.`product_id`;
