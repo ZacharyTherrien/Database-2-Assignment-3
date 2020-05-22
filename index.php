@@ -1,18 +1,6 @@
 <?php
     session_start();
-    require_once('./controllers/database.controller.php');
-    //CONTROLLER TO DISPLAY AMIIBOS ON HOMES PAGE, CONNECTION FILE LATER.
-    $query = "SELECT `id`, `name`, `series` FROM `product` ORDER BY `num_sold` DESC LIMIT 5";
-    $statement = $connection->prepare($query);
-    $statement->execute();
-    $statement->bind_result($id, $name,$series);
-    $products = [];
-    for($i = 0; $statement->fetch(); $i++){
-        $products[$i] = ['id' => $id, 'name' => $name, 'series' => $series];
-    }
-    /*Blurt out the contents of the associative array, debugging only.*/
-    //echo print_r($products);    
-    $statement->close();
+    require_once('./controllers/home.select.controller.php');
 ?>
 <!DOCTYPE html>
 <!--
@@ -20,7 +8,17 @@
     - How to store BLOBs?
     - Do passwords need to be hashed and then stored?
     - Will the collection trigger work if making a purchase?
-    - How to stay logged in after registering.
+    - Help on the triggers.
+    - Do we need an include for the header?
+    - "display all products that are available to purchase on your site" so with stock > 0?
+    - Sorting and filtering 3 each or 3 combined?
+
+    TODOs:
+    - 3 filter & sorting for products.
+    - Add to cart button for a prooduct if customer is logged in.
+    - Cart stuff.
+    - Checkout.
+    - Collection stuff.
 
     Ideas:
     - A collection home page: demonstrate a bunch of collections.
