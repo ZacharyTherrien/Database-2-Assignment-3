@@ -10,14 +10,18 @@ if(isset($_GET['id'])){
 }
 echo $id;
 if($id == 0){
-    require_once('./controllers/products.controller.php');
-}
-else{
     //Connections to each filter depending on $_GET:
+    //Filter on price, series, name (WHERE)
+    //Sort by name, series, price (ORDER BY)
     $filter;
     $sort;
     //product id 0 = or not set, main catalogue any id > 0 is an individual product.
     //If id == 0, check filter and sort.
+    require_once('./controllers/products.controller.php');
+    //Get average ratings.
+    require_once('./controllers/review.averages.controller.php');
+}
+else{
     require_once('./controllers/product.controller.php');
 }
 ?>
@@ -33,7 +37,7 @@ else{
             <main>
                 <?php
                     //Test area:
-                    //print_r($products);
+                    //print_r($avgRatings);
                 ?>
                 <?php
                     //INDIVIDUAL PRODUCT (put into an include)
@@ -61,7 +65,16 @@ else{
                         foreach($products as $product){ ?>
                             <li class="ProductDisplay">
                                 <span>
-                                    <?= "||".$product['name']." Series".$product['series']  ?>
+                                    <?= "||".$product['name']." Series: ".$product['series']  ?>
+                                    <?php
+                                        $productReview =$avgRatings[$product['id']];
+                                        if($product['id'] == $productReview['productID']) {
+                                            echo "Rating: ".$productReview['avgRating'];
+                                        }   
+                                        else{
+                                            echo "Rating: ";
+                                        }
+                                    ?>
                                     <form action="./products.php" method="GET">
                                         <input type="hidden" name="id" value='<?= $product['id'] ?>'>
                                         <input type="submit" value="Visit Page">

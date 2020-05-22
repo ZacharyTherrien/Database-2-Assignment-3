@@ -442,6 +442,17 @@ VALUES (005, 0020, 5, 995.00);
 -- Order 0004 customer 0003 (Sam)
 INSERT INTO `order_item` (`product_id`, `order_id`, `quantity`, `total`)
 VALUES (010, 0004, 1, 0.99);
+INSERT INTO `order_item` (`product_id`, `order_id`, `quantity`, `total`)
+VALUES (005, 0004, 1, 150.99);
+
+-- Mock Data for review
+INSERT INTO `review` (`product_id`, `customer_id`, `rating`, `comment`)
+VALUES (005, 002, 5, "Thx, finally got OoT costume in BotW.");
+INSERT INTO `review` (`product_id`, `customer_id`, `rating`, `comment`)
+VALUES (005, 003, 4, "Why all the hype?");
+INSERT INTO `review` (`product_id`, `customer_id`, `rating`, `comment`)
+VALUES (001, 001, 4, "Mario is Mario");
+
 
 --------------------------------------------------------
 --                  TRIGGERS (Part 2)                 --

@@ -1,7 +1,7 @@
 <?php
 require_once('database.controller.php');
 //Only shows products avilable to purchase (AKA stock than 0 in stock).
-$query = "SELECT `id`, `name`, `series` FROM `product` WHERE `stock` > 0";
+$query = "SELECT `id`, `name`, `series` FROM `product`";
 $statement = $connection->prepare($query);
 $statement->execute();
 $statement->bind_result($id, $name, $series);
