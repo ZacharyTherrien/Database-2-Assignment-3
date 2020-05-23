@@ -6,20 +6,36 @@
 <!--
     Questions to ask Vik:
     - How to store BLOBs?
-    - Do passwords need to be hashed and then stored?
-    - Will the collection trigger work if making a purchase?
-    - Help on the triggers.
-    - Do we need an include for the header?
-    - "display all products that are available to purchase on your site" so with stock > 0?
-    - Sorting and filtering 3 each or 3 combined?
-    - Where should the item quantity be?
 
     TODOs:
-    - 3 filter & sorting for products.
+    - Add average rating and reviews for individual products.
+    -- ADD TO CART:
     - Add to cart button for a prooduct if customer is logged in.
-    - Cart stuff.
+    - A form should also allow to choose the amount to add.
+    - Said form leads to a controller to insert into cart.
+    - If less than 1 or over stock amount, send back to product with error message.
+    - If user already has item in cart and purchases from product, add to quantity if possible.
+    - After a vadlid amount entered send the user to the cart.
+    --- CART:
+    - In cart, let customer choose whether to continue shopping or checkout.
+    - Display for each product its quantity and combined prices and the cart's total price.
+    -- CHANGE CART QUANTITY:
+    - Each product will have a number input with quantity as its placeholder.
+    - A product's quantity can be changed based on input.
+    - To finalize new quantities, add a submit button.
+    - After submit button is clicked, use new update controller and head back to cart.
+    *** In the new controller, have a foreach loop go over $_POST?
+    -- REMOVE FROM CART:
+    - Each product should have a remove button, completely removing it from customer's cart.
+    - If a quantity is submitted as 0, than remove it.
     - Checkout.
     - Collection stuff.
+
+    George TODOs:
+    - Create includes of header & footer for each page (don't forget to start_session at top).
+    - Create the collections page similarly to the product page.
+    - Add images to the database through php.
+    - Add better styling to some pages.
 
     Ideas:
     - A collection home page: demonstrate a bunch of collections.
