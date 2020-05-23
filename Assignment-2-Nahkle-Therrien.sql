@@ -222,11 +222,11 @@ ON `product` (`name`, `series`);
 
 -- An index for review by ratings.
 CREATE INDEX `idx_review_rating_product_id`
-ON `review` (`rating`, `product_id`); 
+ON `review` (`rating`); 
 
 -- An index for customers by location.
 CREATE INDEX `idx_customer_location_id`
-ON `customer` (`location`, `id`);
+ON `customer` (`location`);
 
 -- Create Roles
 DROP ROLE IF EXISTS `Registered Customer`;
@@ -277,12 +277,12 @@ ON `Amiibo_DB`.`customer`
 TO `Registered Customer`;
 
 -- Orders
-GRANT SELECT
+GRANT SELECT, INSERT
 ON `Amiibo_DB`.`order`
 TO `Registered Customer`;
 
 -- Order Item
-GRANT SELECT
+GRANT SELECT, INSERT
 ON `Amiibo_DB`.`order_item`
 TO `Registered Customer`;
 
@@ -321,7 +321,7 @@ ON `Amiibo_DB`.`product`
 TO `Administrator`;
 
 -- Customer
-GRANT SELECT, DELETE, INSERT
+GRANT SELECT, DELETE
 ON `Amiibo_DB`.`customer_info_for_admin`
 TO `Administrator`;
 
