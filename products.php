@@ -8,7 +8,7 @@ if(isset($_GET['id'])){
     $id=$_GET['id'];
     echo "here!";
 }
-echo $id;
+//echo $id;
 if($id == 0){
     //Get average ratings.
     //require_once('./controllers/review.averages.controller.php');
@@ -45,10 +45,12 @@ else{
     <head>
         <meta charset="utf-8">
         <link href="style.css" rel="stylesheet">
-        <title>Amiibo Store</title>
+        <title>Amiibo Store - Products</title>
     </head>
     <container>
         <body>
+            <?php include './includes/include_header.php';?>
+            <?php include './includes/include_nav.php';?>
             <main>
                 <?php
                     //Test area:
@@ -68,6 +70,34 @@ else{
                             <li><?= $series ?></li>
                             <li><?= $description ?></li>
                             <li><?= $price ?></li>
+                            <?php if(isset($_SESSION['id']) && $stock > 0) { ?>
+                                <form action="./controllers/cart.check.controller.php" method="POST">
+                                    <input type="hidden" name="id" value="<?= $id ?>">
+                                    <li><input type="number" name="quantity" value="0"></li>
+                                    <li><input type="submit" value="Make Purchase"></li>
+                                </form>
+                            <li>
+                                <?php
+                                    $err = $_GET['err'];
+                                    if(isset($_GET['err'])){
+                                        switch ($_GET['err']){
+                                            case 1:
+                                                echo "Invalid amount entered.";
+                                                break;
+                                            case 2:
+                                                echo "Apologies, inssufficient stock remaining.";
+                                                break;
+                                        }
+                                    }
+                                ?>
+                            </li>
+                            <?php } 
+                            else if ($stock < 1){ ?>
+                                <li>Sorry, but this Amiibo is out of stock.</li>
+                            <?php }
+                            else { ?>
+                                <li>You must be logged in order to purchase this item.</li>
+                            <?php } ?>
                             <li>Overall Rating: <?= $avgRating ?></li>
                             <li>Reviews:</li>
                         </ul>
@@ -135,6 +165,7 @@ else{
                     } ?>
                 </ul>
             </main>
+        <?php include './includes/include_footer.php';?>
         </body>
     </container>
 </html>

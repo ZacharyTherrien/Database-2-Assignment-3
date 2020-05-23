@@ -12,10 +12,12 @@ Error numbers:
     <head>
         <meta charset="utf-8">
         <link href="style.css" rel="stylesheet">
-        <title>Amiibo Store</title>
+        <title>Amiibo Store - Sign Up</title>
     </head>
     <container>
         <body>
+            <?php include './includes/include_header.php';?>
+            <?php include './includes/include_nav.php';?>
             <main>
                 <form action="./controllers/registratrion.controller.php" method="POST">
                     <ul class="lists">
@@ -55,6 +57,7 @@ Error numbers:
                     ?>
                 <div>
             </main>
+            <?php include './includes/include_footer.php';?>
         </body>
     </container>
 </html>
