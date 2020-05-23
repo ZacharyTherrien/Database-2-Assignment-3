@@ -6,12 +6,10 @@
 <!--
     Questions to ask Vik:
     - How to store BLOBs?
+    - Prevent users from just entering the controller via url?
 
     TODOs:
     -- ADD TO CART:
-    - Said form leads to a controller to insert into cart.
-    - If less than 1 or over stock amount, send back to product with error message.
-    - If user already has item in cart and purchases from product, add to quantity if possible.
     - After a vadlid amount entered send the user to the cart.
     --- CART:
     - In cart, let customer choose whether to continue shopping or checkout.

@@ -14,19 +14,38 @@ if($quantity < 1){
     header('Location: ../products.php?id='.$product_id.'&err=1');
 }
 else{
-    $query = "SELECT `quantity` FROM `cart` WHERE `product_id` = '$product_id' AND `customer_id` = '$customer_id'";
+    //Check if the product has enough remaining for the quantity specified.
+    $query = "SELECT `stock` FROM `product` WHERE `id` = '$product_id'";
     $statement = $connection->prepare($query); 
+    $statement->execute();
     $statement->bind_result($remaining);
+    $statement->fetch();
+    $statement->close();
+    //echo $product_id;
+    //echo $quantity;
     //echo $remaining;
     if($quantity > $remaining){
         //echo "TOO MUCH POWERRRR!";
         header('Location: ../products.php?id='.$product_id.'&err=2');
     }
     else{
-        //Perform another query.
-        //Check if product is already in cart by checking number of rows returned.
-        //If not, use controller to insert.
-        //Else, controller to update.
+        //Perform another query to check whether the product is already in the cart.
+        $query = "SELECT `customer_id`, `product_id` FROM `cart` WHERE `product_id` = '$product_id' AND `customer_id` = '$customer_id'";
+        $statement = $connection->prepare($query);
+        $statement->execute();
+        $statement->store_result();
+        //echo "first";
+        //echo " num: ".$statement->num_rows;
+        if($statement->num_rows == 0){   //Check if product is already in cart by checking number of rows returned.
+            //If not, use controller to insert.
+            //echo "Alright!";
+            require_once('cart.insert.controller.php');
+        }
+        else{                           //Else, require controller to update.
+            //echo "second";
+            require_once('cart.update.controller.php');
+        }
         //Finally, go to cart.
+        header('Location: ../cart.php');
     }
 }
