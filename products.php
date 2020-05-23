@@ -33,7 +33,11 @@ if($id == 0){
     }
 }
 else{
+    //Controller for a product's info.
     require_once('./controllers/product.controller.php');
+    //Controller for reviews of the product.
+    require_once('./controllers/review.controller.php');
+    echo "AAAAAAAAAAAAAAAAAAAAAAAAA";
 }
 ?>
 <!DOCTYPE html>
@@ -48,7 +52,8 @@ else{
             <main>
                 <?php
                     //Test area:
-                    print_r($products);
+                    print_r($reviews);
+                    echo $avgRating;
                 ?>
                 <?php
                     //INDIVIDUAL PRODUCT (put into an include)
@@ -63,6 +68,15 @@ else{
                             <li><?= $series ?></li>
                             <li><?= $description ?></li>
                             <li><?= $price ?></li>
+                            <li>Overall Rating: <?= $avgRating ?></li>
+                            <li>Reviews:</li>
+                        </ul>
+                        <ul>
+                            <?php foreach($reviews as $review){ ?>                          
+                                <li>User Rating: <?= $review['ratings'] ?></li>
+                                <li>Comment: <?= $review['comments'] ?></li>
+                                <br>
+                            <?php } ?>
                         </ul>
                     </div>
                 <!-- ^ PRODUCT AND THEN PRODUCTS STARTING AFTER THE ELSE> -->
