@@ -39,16 +39,16 @@ Error numbers:
                                     echo "One or more fields were empty.";
                                     break;
                                 case 2:
-                                    echo "Passwords did not match.";
+                                    echo "Username length is invalid";
                                     break;
                                 case 3:
-                                    echo "User is already used.";
+                                    echo "Passwords did not match.";
                                     break;
                                 case 4:
-                                    echo "Email is already used.";
+                                    echo "User is already used.";
                                     break;
                                 case 5:
-                                    echo "Username length is invalid";
+                                    echo "Email is already used.";
                                     break;
                             }
                         }

@@ -4,10 +4,10 @@ require_once('./database.controller.php');
 /*
 Error numbers:
 1. Empty field.
-2. Passwords do not match
-3. Non-unique username.
-4. Non-unique email.
-5. Username too short.
+2. Username too short.
+3. Passwords do not match
+4. Non-unique username.
+5. Non-unique email.
 */
 $user = $_POST['username'];
 $f_name = $_POST['first_name'];
@@ -28,11 +28,11 @@ if(empty($user) || empty($f_name) || empty($l_name) || empty($email) || empty($p
     header('Location: ../registration.php?err=1');
 }
 else if(strlen($user) <= 5){
-    header('Location: ../registration.php?err=5');
+    header('Location: ../registration.php?err=2');
 }
 else if($pwd !== $pwd_confirmed){
     //echo "uwu";
-    header('Location: ../registration.php?err=2');
+    header('Location: ../registration.php?err=3');
 }
 else{
     //Check for already existing username:
@@ -42,7 +42,7 @@ else{
     $statement->store_result();
     //echo "result 1: ".$statement->num_rows;
     if($statement->num_rows > 0){
-        header('Location: ../registration.php?err=3');
+        header('Location: ../registration.php?err=4');
         //echo "copy username";
     }
     else{
@@ -53,7 +53,7 @@ else{
         $statement->store_result();
         //echo "result 2: ".$statement->num_rows;
         if($statement->num_rows > 0){
-            header('Location: ../registration.php?err=4');
+            header('Location: ../registration.php?err=5');
             //echo "copy email";
         }
         else{

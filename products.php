@@ -10,9 +10,11 @@ if(isset($_GET['id'])){
 }
 echo $id;
 if($id == 0){
+    //Get average ratings.
+    //require_once('./controllers/review.averages.controller.php');
     //Connections to each filter depending on $_GET:
     //Filter on name, price, review avg (WHERE)
-    //Sort by name, review avg, price (ORDER BY)
+    //Sort by name, series, price (ORDER BY)
     $filter;
     $sort;
     //product id 0 = or not set, main catalogue any id > 0 is an individual product.
@@ -27,10 +29,8 @@ if($id == 0){
         $filter2;
         $filter3;
         //require_once('./controllers/products.modified.php');
-        require_once('./controllers/products.controller.php');
+        require_once('./controllers/products.modified.controller.php');
     }
-    //Get average ratings.
-    require_once('./controllers/review.averages.controller.php');
 }
 else{
     require_once('./controllers/product.controller.php');
@@ -48,7 +48,7 @@ else{
             <main>
                 <?php
                     //Test area:
-                    //print_r($products);
+                    print_r($products);
                 ?>
                 <?php
                     //INDIVIDUAL PRODUCT (put into an include)
@@ -58,7 +58,7 @@ else{
                     if($_GET['id'] && $_GET['id'] != 0){
                 ?>
                     <div>
-                        <ul>
+                        <ul class="lists">
                             <li><?= $name ?></li>
                             <li><?= $series ?></li>
                             <li><?= $description ?></li>
@@ -73,19 +73,20 @@ else{
                     } 
                     else{   //PRODUCTS CATALOGUE (put into an include) ?>
                     <div>
-                        <ul>
+                        <ul class="lists">
                         <form action="./products.php" methos="GET">
-                            <li><label>Sort By: </label></li>
                             <input type="hidden" name="modified" value="modified">
+                            <li><label>Sort By: </label></li>
                             <li><select name="sort">
+                                <option value="None">None</option>
                                 <option value="name">Name</option>
                                 <option value="series">Series</option>
-                                <option value="review">Review Score</option>
+                                <option value="price">Price</option>
                             </select></li>
                             <li><label>Filter By:</label></li>
-                            <li>Name <input type="text" name="filterName"></input></li>
-                            <li>Price <input type="number" name="filterPrice"></input></li>
-                            <li>Average Rating <input type="number" name="filterRating"></input></li>
+                            <li>Name <input type="text" name="name"></input></li>
+                            <li>Price <input type="number" name="price"></input></li>
+                            <li>Average Rating <input type="number" name="rating"></input></li>
                             <li><input type="submit" value="Use Parameters"></li>
                             <li><a href="./products.php">Use Default</a></li>
                         </form>
@@ -94,17 +95,17 @@ else{
                     <ul class="lists">
                     <?php
                         foreach($products as $product){ ?>
-                            <li class="ProductDisplay">
+                            <li class="productDisplay">
                                 <div>
-                                    <?= "||".$product['name']." Series: ".$product['series']  ?>
+                                    <?= "||".$product['name']." Series: ".$product['series']." Rating: ".$product['rating'] ?>
                                     <?php
-                                        $productReview =$avgRatings[$product['id']];
-                                        if($product['id'] == $productReview['productID']) {
-                                            echo "Rating: ".$productReview['avgRating'];
-                                        }   
-                                        else{
-                                            echo "Rating: ";
-                                        }
+                                        // $product = $avgRatings[$product['id']];
+                                        // if($product['id'] == $productReview['productID']) {
+                                        //     echo "Rating: ".$productReview['avgRating'];
+                                        // }   
+                                        // else{
+                                        //     echo "Rating: ";
+                                        // }
                                     ?>
                                     <form action="./products.php" method="GET">
                                         <input type="hidden" name="id" value='<?= $product['id'] ?>'>
