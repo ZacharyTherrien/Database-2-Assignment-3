@@ -38,12 +38,6 @@ $query =    "SELECT `id`, `name`, `series`, AVG(`r`.`rating`) FROM `product` AS 
 $query .= $filter;
 $query .= " GROUP BY `id`";
 $query .= $sort;
-$query .= " UNION ";
-$query .=   "SELECT `id`, `name`, `series`, AVG(`r`.`rating`) FROM `product` AS `p`
-            RIGHT OUTER JOIN `review` AS `r` ON `p`.`id` = `r`.`product_id`";
-$query .= $filter;
-$query .= " GROUP BY `id`";
-$query .= $sort;
 echo ($query);
 $statement = $connection->prepare($query);
 $statement->execute();

@@ -4,10 +4,6 @@ require_once('database.controller.php');
 //DEFAULT QUERY DISPLAYS NEWEST AMIIBOS FIRST.
 $query =   "SELECT `id`, `name`, `series`, AVG(`r`.`rating`) FROM `product` AS `p`
             LEFT OUTER JOIN `review` AS `r` ON `p`.`id` = `r`.`product_id`
-            GROUP BY `id` 
-            UNION
-            SELECT `id`, `name`, `series`, AVG(`r`.`rating`) FROM `product` AS `p`
-            RIGHT OUTER JOIN `review` AS `r` ON `p`.`id` = `r`.`product_id`
             GROUP BY `id`";
 //Ok, I got it after this time. :ok_hand:
 // "SELECT `id`, AVG(`r`.`rating`) FROM `product` AS `p`
