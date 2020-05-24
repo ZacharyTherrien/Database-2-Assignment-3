@@ -9,15 +9,11 @@
     - Prevent users from just entering the controller via url?
 
     TODOs:
-    --- CART:
-    - Display the cart's total price.
+    --- Cart
+    - Display a product's individual price.
     -- CHANGE CART QUANTITY:
-    - A product's quantity can be changed based on input.
-    - To finalize new quantities, add a submit button.
-    - After submit button is clicked, use new update controller and head back to cart.
-    *** In the new controller, have a foreach loop go over $_POST?
+    - Validate that amount is correct, above 0.
     -- REMOVE FROM CART:
-    - Each product should have a remove button.  
     - The button should completely remove the product from customer's cart.
     - If a quantity is submitted as 0, than remove it.
     --- Checkout.

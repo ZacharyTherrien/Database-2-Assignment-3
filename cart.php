@@ -22,7 +22,7 @@ require_once('./controllers/total.controller.php');
             <h1>Your Cart</h1>
             <?php 
             if(isset($_SESSION['id'])){ 
-                if($numRows < 1){?>
+                if($numItems <= 0){ ?>
                     <p>Your cart seems to be empty.</p>    
                 <?php
                 }
