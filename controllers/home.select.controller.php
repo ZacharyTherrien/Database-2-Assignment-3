@@ -1,5 +1,5 @@
 <?php
-require_once('./controllers/database.controller.php');
+require_once('database.controller.php');
 //CONTROLLER TO DISPLAY AMIIBOS ON HOMES PAGE, CONNECTION FILE LATER.
 $query = "SELECT `id`, `name`, `series` FROM `product` ORDER BY `num_sold` DESC LIMIT 5";
 $statement = $connection->prepare($query);

@@ -45,7 +45,7 @@ else{
     <head>
         <meta charset="utf-8">
         <link href="style.css" rel="stylesheet">
-        <title>Amiibo Store - Products</title>
+        <title>Amiibo Store - Products Page</title>
     </head>
     <container>
         <body>
