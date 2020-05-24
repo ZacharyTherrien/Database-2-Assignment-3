@@ -15,12 +15,8 @@ if($quantity < 1){
 }
 else{
     //Check if the product has enough remaining for the quantity specified.
-    $query = "SELECT `stock` FROM `product` WHERE `id` = '$product_id'";
-    $statement = $connection->prepare($query); 
-    $statement->execute();
-    $statement->bind_result($remaining);
-    $statement->fetch();
-    $statement->close();
+    //$remaining comes from here.
+    require_once('cart.validate.controller.php');
     //echo $product_id;
     //echo $quantity;
     //echo $remaining;
@@ -40,12 +36,13 @@ else{
             //If not, use controller to insert.
             //echo "Alright!";
             require_once('cart.insert.controller.php');
+            //Finally, go to cart.
+            header('Location: ../cart.php');
         }
         else{                           //Else, require controller to update.
             //echo "second";
             require_once('cart.update.controller.php');
+            //Header depends on updating the cart, so the relocation is done in the controller.
         }
-        //Finally, go to cart.
-        header('Location: ../cart.php');
     }
 }

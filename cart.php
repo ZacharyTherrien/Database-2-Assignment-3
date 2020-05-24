@@ -35,11 +35,28 @@ require_once('./controllers/total.controller.php');
                 </form>
                 <h4>Total Price: <?= $total ?></h4>
                 <?php
+                    if(isset($_GET['err'])){
+                        switch($_GET['err']){
+                            case 1: ?>
+                                <p>Invalid quantity entered.</p>
+                                <?php
+                                break;
+                            case 2:?>
+                                <p>Apologies, insufficient stock remaining.</p>
+                                <?php
+                                break;
+                        }
+                    }
+                ?>
+                <?php
                     foreach($items as $item){?>
                         <table>
                             <tr>
                                 <td><h3><?= "Amiibo: ".$item['name']; ?></h3></td>
                                 <td><h5><?= "Series: ".$item['series']; ?></h4></td>
+                            </tr>
+                            <tr>
+                                <td><h6><?= "Product's Price: ".$item['price']; ?></h6></td>
                             </tr>
                             <tr>
                                 <td>

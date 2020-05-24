@@ -9,10 +9,6 @@
     - Prevent users from just entering the controller via url?
 
     TODOs:
-    --- Cart
-    - Display a product's individual price.
-    -- CHANGE CART QUANTITY:
-    - Validate that amount is correct, above 0.
     -- REMOVE FROM CART:
     - The button should completely remove the product from customer's cart.
     - If a quantity is submitted as 0, than remove it.
