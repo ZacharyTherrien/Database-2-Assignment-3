@@ -68,7 +68,9 @@ require_once('./controllers/total.controller.php');
                                     </form>
                                 <td>
                                 <td>
-                                    <form action="./controllers/cart.delete.php" method="POST">
+                                    <form action="./controllers/cart.delete.controller.php" method="POST">
+                                        <input type="hidden" name="customer_id" value="<?= $_SESSION['id'] ?>">
+                                        <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
                                         <input type="submit" value="Remove From Cart">
                                     </form>
                                 </td>

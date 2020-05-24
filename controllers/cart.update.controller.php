@@ -15,6 +15,8 @@ if(isset($_POST['customer_id'])){   //Goes here if update through cart.
     //echo $quantity;
     if($quantity == 0){    //Remove product from customer's cart.
         //Require once the cart delete controller.
+        //Header is in the controller.
+        require_once('cart.delete.controller.php');
     }
     else if($quantity < 0){
         header('Location: ../cart.php?err=1');
@@ -38,12 +40,7 @@ if(isset($_POST['customer_id'])){   //Goes here if update through cart.
 else if($quantity > 0){             //Update a product's quantity, if added through product page. Validation already done.
     //VALIDATION HERE PLEASE!
     //Find the current product's quantity first.
-    $query = "SELECT `quantity` FROM `cart` WHERE `product_id` = '$product_id' AND `customer_id` = '$customer_id'";
-    $statement = $connection->prepare($query);
-    $statement->execute();
-    $statement->bind_result($current_quantity);
-    $statement->fetch();
-    $statement->close();
+    require_once('cart.quantity.check.controller.php');
     //Add current amount to new amount.
     $quantity = $quantity + $current_quantity;
     //echo $current_quantity." ";
