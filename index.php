@@ -10,12 +10,6 @@
 
     TODOs:
     --- Checkout.
-    - Send customer to receipt controller.
-    - Hidden value(s): total price
-    - Use cart.controller.php to get all cart items.
-    - Insert into order using a controller.
-    - Afterwards, insert into order_item with another controller.
-    - Delete customer's products from the cart.
     - Go to receipt page.
     - Print total cost, each item and each their cost, quantity and the timestamp as a list.
 
