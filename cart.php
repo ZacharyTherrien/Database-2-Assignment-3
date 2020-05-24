@@ -20,38 +20,46 @@ require_once('./controllers/total.controller.php');
             <?php include './includes/include_nav.php';?>
             <main>
             <h1>Your Cart</h1>
-            <form action="products.php">
-                <input type="submit" value="Continue?..">
-            </form>
-            <form action="./controllers/receipt.controller.php" method="POST">
-                <input type="submit" value="Purchase!">
-            </form>
-            <h4>Total Price: <?= $total ?></h4>
-            <?php if(isset($_SESSION['id'])){ 
-                foreach($items as $item){?>
-                    <table>
-                        <tr>
-                            <td><h3><?= "Amiibo: ".$item['name']; ?></h3></td>
-                            <td><h5><?= "Series: ".$item['series']; ?></h4></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <form action="./controllers/cart.update.controller.php" method="POST">
-                                    <input type="hidden" name="customer_id" value="<?= $_SESSION['id'] ?>">
-                                    <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
-                                    <input type="number" name="quantity" value="<?= $item['quantity'] ?>">
-                                    <input type="submit" value="Change Quantity">
-                                </form>
-                            <td>
-                            <td>
-                                <form action="./controllers/cart.delete.php" method="POST">
-                                    <input type="submit" value="Remove From Cart">
-                                </form>
-                            </td>
-                        </tr>
-                    </table>
-                <?php 
-                } ?>
+            <?php 
+            if(isset($_SESSION['id'])){ 
+                if($numRows < 1){?>
+                    <p>Your cart seems to be empty.</p>    
+                <?php
+                }
+                else{  ?>
+                <form action="products.php">
+                    <input type="submit" value="Continue?..">
+                </form>
+                <form action="./controllers/receipt.controller.php" method="POST">
+                    <input type="submit" value="Purchase!">
+                </form>
+                <h4>Total Price: <?= $total ?></h4>
+                <?php
+                    foreach($items as $item){?>
+                        <table>
+                            <tr>
+                                <td><h3><?= "Amiibo: ".$item['name']; ?></h3></td>
+                                <td><h5><?= "Series: ".$item['series']; ?></h4></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form action="./controllers/cart.update.controller.php" method="POST">
+                                        <input type="hidden" name="customer_id" value="<?= $_SESSION['id'] ?>">
+                                        <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
+                                        <input type="number" name="quantity" value="<?= $item['quantity'] ?>">
+                                        <input type="submit" value="Change Quantity">
+                                    </form>
+                                <td>
+                                <td>
+                                    <form action="./controllers/cart.delete.php" method="POST">
+                                        <input type="submit" value="Remove From Cart">
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                    <?php 
+                }
+            } ?>
             <?php }
             else { ?>
                 <p>In order to view your cart, please make sure to log in.</p>
