@@ -1,9 +1,9 @@
 <?php
 session_start();
 require_once('database.controller.php');
-echo "heyheyhey";
+//echo "heyheyhey";
 $id = $_SESSION['id'];
-echo $id;
+//echo $id;
 $query =   "SELECT `c`.`product_id`, `c`.`quantity`, `p`.`name`, `p`.`series`, `p`.`price` FROM `cart` AS `c` 
             JOIN `product` AS `p` ON `c`.`product_id` = `p`.`id` 
             WHERE `customer_id` = '$id'";

@@ -1,4 +1,5 @@
 <?php
+//Get total cost of all items in a customer's cart.
 require_once('database.controller.php');
 $id = $_SESSION['id'];
 $query =   "SELECT SUM(`quantity` * `price`) FROM `cart` JOIN `product` ON `product_id` = `id`

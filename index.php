@@ -9,15 +9,21 @@
     - Prevent users from just entering the controller via url?
 
     TODOs:
-    -- REMOVE FROM CART:
-    - The button should completely remove the product from customer's cart.
-    - If a quantity is submitted as 0, than remove it.
     --- Checkout.
+    - Send customer to receipt controller.
+    - Hidden value(s): total price
+    - Use cart.controller.php to get all cart items.
+    - Insert into order using a controller.
+    - Afterwards, insert into order_item with another controller.
+    - Delete customer's products from the cart.
+    - Go to receipt page.
+    - Print total cost, each item and each their cost, quantity and the timestamp as a list.
 
     George TODOs:
     - Create the collections page similarly to the product page.
     - Add images to the database through php.
     - Add better styling to some pages.
+    - Add includes to make the pages nicer.
 
     Ideas:
     - A collection home page: demonstrate a bunch of collections.
