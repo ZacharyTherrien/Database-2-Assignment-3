@@ -9,5 +9,6 @@ $statement->execute();
 $statement->bind_result($name, $series, $price, $quantity);
 $purchases = [];
 for($i = 0; $statement->fetch(); $i++){
-    $statement[$i] = ['name' => $name, 'series' => ];
+    $purchases[$i] = ['name' => $name, 'series' => $series, 'price' => $price, 'quantity' => $quantity];
 }
+$statement->close();

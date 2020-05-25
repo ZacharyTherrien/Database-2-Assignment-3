@@ -1,22 +1,19 @@
 <?php
 require_once('database.controller.php');
 
-$nameFilter = $_GET['name'];
+$nameFilter = $_GET['search'];
 if(!empty($nameFilter))
-    $filter = "cus.`username` = '$nameFilter'";
+    $filter = " AND cus.`username` = '$nameFilter'";
 
 $query =    "SELECT cus.`username`, COUNT(cus.`username`) 
             FROM `collection` col, `customer` cus
-            WHERE cus.`id` = col.`customer_id` AND";
+            WHERE cus.`id` = col.`customer_id`";
 $query .= $filter;
-$query .= " GROUP BY `id`";
+$query .= " GROUP BY cus.`username`;";
 echo ($query);
 $statement = $connection->prepare($query);
 $statement->execute();
-if($statement){
-    echo "donzo";
-}
-$statement->bind_result($id, $name, $series, $rating);
+$statement->bind_result($username, $count);
 $usernames = [];
 for($i = 0; $statement->fetch(); $i++){
     $usernames[$i] = ['username' => $username, 'count' => $count];

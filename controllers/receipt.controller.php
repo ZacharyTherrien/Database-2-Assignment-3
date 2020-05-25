@@ -2,9 +2,9 @@
 session_start();
 require_once('database.controller.php');
 $customer_id = $_SESSION['id'];
-//Get associative arrayof all cart items. Get the items array.
+//Get associative array of all cart items. Get the items array.
 require_once('cart.controller.php');
-//Get the total cost. As total
+//Get the total cost. As total.
 require_once('total.controller.php');
 //Require controller to insert into order.
 require_once('order.insert.controller.php');

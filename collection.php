@@ -3,21 +3,20 @@
     //require_once('./controllers/collections.controller.php');
 
 $id=0;
-if(isset($_GET['id'])){
-    $id=$_GET['id'];
-    echo "ID:" . $id;
+if(isset($_GET['id'])) {
+    $id = $_GET['id'];
 }
 
 if($id == 0) {
-    //product id 0 = or not set, main catalogue any id > 0 is an individual product.
+    //username id 0 = or not set, main catalogue any id > 0 is an individual collection.
     //If id == 0, check filter and sort.
     if(!isset($_GET['modified'])) {
         require_once('./controllers/collections.controller.php');
     }
     else{
+        require_once('./controllers/collections.modified.controller.php');
         $search = $_GET['search'];
         echo "You searched for: ". $search;
-        
     }
 }
 else {
@@ -54,10 +53,6 @@ else {
                             <div>
                                 <?= $username['count'] . " amiibo" ?>
                             </div>
-                            <form action="./collection.php" method="GET">
-                                <input type="hidden" name="id" value='<?= $collection['id'] ?>'>
-                                <input type="submit" value="Visit Page">
-                            </form>
                             <hr>
                         </li>
                     <?php
@@ -71,7 +66,8 @@ else {
                     <ul class="lists">
                     <form action="./collection.php" methos="GET">
                         <input type="hidden" name="modified" value="modified">
-                        <li>Search <input type="text" name="search"></input></li>
+                        <li><input type="text" name="search"></input></li>
+                        <li><input type="submit" value="Search"></li>
                     </form>
                     <?php foreach($usernames as $username) { ?>
                             <li class="productDisplay">
@@ -82,9 +78,8 @@ else {
                                     <?= $username['count'] . " amiibo" ?>
                                 </div>
                                 <form action="./collection.php" method="GET">
-                                    <input type="hidden" name="id" value='<?= $collection['id'] ?>'>
+                                    <input type="hidden" name="id" value='<?= $username['id'] ?>'>
                                     <input type="submit" value="Visit Page">
-                                    <!------->
                                 </form>
                                 <hr>
                             </li>
