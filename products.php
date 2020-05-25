@@ -1,14 +1,11 @@
 <?php
-session_start();
-//require_once('./controllers/database.controller.php');
+session_start(); 
 $id=0;
 $filter=0;
 $sort=0;
 if(isset($_GET['id'])){
     $id=$_GET['id'];
-    echo "here!";
 }
-//echo $id;
 if($id == 0){
     //Get average ratings.
     //require_once('./controllers/review.averages.controller.php');
@@ -24,11 +21,9 @@ if($id == 0){
     }
     else{
         $sort = $_GET['sort'];
-        echo "Eyy, her my sort: ".$sort;
         $filter1;
         $filter2;
         $filter3;
-        //require_once('./controllers/products.modified.php');
         require_once('./controllers/products.modified.controller.php');
     }
 }
@@ -37,7 +32,6 @@ else{
     require_once('./controllers/product.controller.php');
     //Controller for reviews of the product.
     require_once('./controllers/review.controller.php');
-    echo "AAAAAAAAAAAAAAAAAAAAAAAAA";
 }
 ?>
 <!DOCTYPE html>
@@ -53,15 +47,9 @@ else{
             <?php include './includes/include_nav.php';?>
             <main>
                 <?php
-                    //Test area:
-                    print_r($reviews);
-                    echo $avgRating;
-                ?>
-                <?php
                     //INDIVIDUAL PRODUCT (put into an include)
                     //$name, etc... are provided from the product controller.
                     //Entrance to here can only be done is product controller is reached too.
-                    //echo "ID:".$id;
                     if($_GET['id'] && $_GET['id'] != 0){
                 ?>
                     <div>
@@ -142,15 +130,6 @@ else{
                             <li class="productDisplay">
                                 <div>
                                     <?= "||".$product['name']." Series: ".$product['series']." Rating: ".$product['rating'] ?>
-                                    <?php
-                                        // $product = $avgRatings[$product['id']];
-                                        // if($product['id'] == $productReview['productID']) {
-                                        //     echo "Rating: ".$productReview['avgRating'];
-                                        // }   
-                                        // else{
-                                        //     echo "Rating: ";
-                                        // }
-                                    ?>
                                     <form action="./products.php" method="GET">
                                         <input type="hidden" name="id" value='<?= $product['id'] ?>'>
                                         <input type="submit" value="Visit Page">

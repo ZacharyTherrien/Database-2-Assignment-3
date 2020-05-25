@@ -15,7 +15,6 @@ require_once('./controllers/total.controller.php');
     </head>
     <container>
         <body>
-            <!-- Find way *use controller and require* to display TOTAL PRICE! -->
             <?php include './includes/include_header.php';?>
             <?php include './includes/include_nav.php';?>
             <main>

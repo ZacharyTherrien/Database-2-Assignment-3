@@ -3,28 +3,7 @@
     require_once('./controllers/home.select.controller.php');
 ?>
 <!DOCTYPE html>
-<!--
-    Questions to ask Vik:
-    - How to store BLOBs?
-    - Prevent users from just entering the controller via url?
-
-    TODOs:
-    --- Checkout.
-    - Go to receipt page.
-    - Print total cost, each item and each their cost, quantity and the timestamp as a list.
-
-    George TODOs:
-    - Create the collections page similarly to the product page.
-    - Add images to the database through php.
-    - Add better styling to some pages.
-    - Add includes to make the pages nicer.
-
-    Ideas:
-    - A collection home page: demonstrate a bunch of collections.
-    - A page for individual collections.
--->
 <head>
-    <!-- SHOULD THIS ALSO BE IN A SNIPPET OF CODE?!? -->
     <meta charset="utf-8">
     <link href="style.css" rel="stylesheet">
     <title>Amiibo Store - Home</title>
@@ -67,21 +46,7 @@
                 </ul>
             </div>
             <div>
-                    TEST AREA: Current user id is set: 
-                    <?php if(isset($_SESSION['username']))
-                    { echo "yes!";
-                      echo " As id: ".$_SESSION['id']." and name: ".$_SESSION['username'];
-                    } 
-                    ?>
-            </div>
         </main>
         <?php include './includes/include_footer.php';?>
     </body>
 </container>
-	<!-- 
-        What should be displayed on the home page.
-
-    -->
-    <?php
-	
-    ?>

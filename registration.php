@@ -1,12 +1,3 @@
-<?php
-/*
-Error numbers:
-1. Empty field.
-2. Passwords do not match
-3. Non-unique username.
-4. Non-unique email.
-*/
-?>
 <!DOCTYPE html>
 <html>
     <head>

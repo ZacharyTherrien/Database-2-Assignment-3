@@ -1,7 +1,6 @@
 <?php
     session_start();
     //require_once('./controllers/collections.controller.php');
-
 $id=0;
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -16,13 +15,11 @@ if($id == 0) {
     else{
         require_once('./controllers/collections.modified.controller.php');
         $search = $_GET['search'];
-        echo "You searched for: ". $search;
     }
 }
 else {
-    //Controller for a indiviudla collections.
+    //Controller for a indiviudla collections
     require_once('./controllers/collection.controller.php');
-    echo "individual collection for " . $id;
 }
 ?>
 
@@ -42,22 +39,26 @@ else {
                 //INDIVIDUAL COLLECTION (put into an include)
                 if($_GET['id'] && $_GET['id'] != 0) {
             ?>
+            <h2><?= $amiibos[0]['username'] . "'s collection" ?></h2>
             <div>
-                <ul class="lists">
-                <?php
+				<table>
+					<tr>
+						<th>Name</th>
+						<th>Series</th>
+						<th>Recent Game</th>
+						<th>Obtained On</th>
+					</tr>
+					<?php
                     foreach($amiibos as $amiibo) { ?>
-                        <li class="productDisplay">
-                            <div>
-                                <?= '<b>' . $amiibo['username'] . '</b>' . "'s collection" ?>
-                            </div>
-                            <div>
-                                <?= $username['count'] . " amiibo" ?>
-                            </div>
-                            <hr>
-                        </li>
+						<tr>
+							<td><?= $amiibo['name'] ?></td>
+							<td><?= $amiibo['series'] ?></td>
+							<td><?= $amiibo['recent_game'] ?></td>
+							<td><?= $amiibo['obtained_on'] ?></td>
+						</tr>
                     <?php
                     } ?>
-                </ul>
+				</table>
             </div>
             <ul class="lists">
             <?php 

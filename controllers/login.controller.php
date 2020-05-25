@@ -9,7 +9,6 @@ Error Numbers:
 require_once('database.controller.php');
 $email = $_POST['email'];
 $pwd = $_POST['password'];
-//print_r($_POST);
 if(empty($email) && empty($pwd)){
     header('Location: ../login.php?err=1');
 }

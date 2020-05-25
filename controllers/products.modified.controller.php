@@ -7,7 +7,6 @@ $query = "";
 $nameFilter = $_GET['name'];
 $priceFilter = $_GET['price'];
 $ratingFilter = $_GET['rating'];
-echo "PRICE: ".$priceFilter;
 if(!empty($nameFilter)){
     $filter = " WHERE `name` = '$nameFilter'";
     $numFilters++;
@@ -38,12 +37,8 @@ $query =    "SELECT `id`, `name`, `series`, AVG(`r`.`rating`) FROM `product` AS 
 $query .= $filter;
 $query .= " GROUP BY `id`";
 $query .= $sort;
-echo ($query);
 $statement = $connection->prepare($query);
 $statement->execute();
-if($statement){
-    echo "LET'S GOOOOOOOOOOOOOOOOOOOOOOOOOOO!!";
-}
 $statement->bind_result($id, $name, $series, $rating);
 $products = [];
 for($i = 0; $statement->fetch(); $i++){

@@ -6,13 +6,11 @@
 require_once('database.controller.php');
 //If we're coming from a product page, then we already have product id, customer id and quantity set.
 //Otherwise, this controller is called from cart where the info is sent from a POST.
-//echo $_POST['customer_id'];
 if(isset($_POST['customer_id'])){   //Goes here if update through cart.
     //echo "YES!";
     $customer_id = $_POST['customer_id'];
     $product_id = $_POST['product_id'];
     $quantity = $_POST['quantity'];
-    //echo $quantity;
     if($quantity == 0){    //Remove product from customer's cart.
         //Require once the cart delete controller.
         //Header is in the controller.
@@ -43,8 +41,6 @@ else if($quantity > 0){             //Update a product's quantity, if added thro
     require_once('cart.quantity.check.controller.php');
     //Add current amount to new amount.
     $quantity = $quantity + $current_quantity;
-    //echo $current_quantity." ";
-    //echo $quantity;
     //Then validate the new amount.
     require_once('cart.validate.controller.php');
     if($quantity > $remaining){

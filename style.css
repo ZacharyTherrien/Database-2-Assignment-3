@@ -110,3 +110,16 @@ footer {
 	list-style: none;
 	padding-left: 10px;
 }
+
+table {
+	border-collapse: collpase;
+	
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th {
+	font-weight: bold;
+}
